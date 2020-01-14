@@ -1,5 +1,5 @@
 jobs:
-  - job: build_test_deploy
+  - job: Build Test Deploy
     steps:
     - task: Maven@3
       displayName: Maven Compile
@@ -37,7 +37,7 @@ jobs:
          $result | ConvertTo-Json | Write-Host
          if ($result.projectStatus.status -eq "OK") {
          Write-Host "Quality Gate Succeeded"
-         }else{
+         } else {
          throw "Quality gate failed"
          }'
             
