@@ -1,7 +1,7 @@
 jobs:
-  - job: Build Test Deploy
+  -job: Build Test Deploy
   steps:
-  - task: Maven@3
+  -task: Maven@3
     displayName: Maven Compile
     inputs:
       mavenPomFile: 'pom.xml'
@@ -12,7 +12,7 @@ jobs:
       jdkArchitectureOption: 'x64'
       publishJUnitResults: false
 
-  - task: SonarCloudPrepare@1
+  -task: SonarCloudPrepare@1
     displayName: Prepare Sonar Cloud
     inputs:
       SonarCloud: 'Sonar Cloud'
@@ -20,12 +20,12 @@ jobs:
       scannerMode: 'Other'
 
 
-  - task: SonarCloudPublish@1
+  -task: SonarCloudPublish@1
     displayName: Sonar Publish
     inputs:
       pollingTimeoutSec: '300'
 
-  - task: PowerShell@2
+  -task: PowerShell@2
     displayName: Check Quality Gate
     inputs:
       targetType: 'inline'
@@ -44,7 +44,7 @@ jobs:
         }else{
         throw "Quality gate failed"
         }
-  - task: CopyFiles@2
+  -task: CopyFiles@2
     displayName: Copy Jar File
     inputs:
       SourceFolder: '$(build.sourcesdirectory)'
@@ -52,7 +52,7 @@ jobs:
       TargetFolder: '$(build.artifactstagingdirectory)'
 
 
-  - task: CopyFiles@2
+  -task: CopyFiles@2
     displayName: Copy Docker File
     inputs:
       SourceFolder: '$(build.sourcesdirectory)'
@@ -60,7 +60,7 @@ jobs:
       TargetFolder: '$(build.artifactstagingdirectory)'
 
 
-  - task: PublishBuildArtifacts@1
+  -task: PublishBuildArtifacts@1
     displayName: Publish Artifact
     inputs:
       PathtoPublish: '$(Build.ArtifactStagingDirectory)'
@@ -68,7 +68,7 @@ jobs:
       publishLocation: 'Container'
 
 
-  - task: Docker@2
+  -task: Docker@2
     displayName: Docker Build and Push
     inputs:
       containerRegistry: 'Azure Openshift Docker Registry'
