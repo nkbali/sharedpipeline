@@ -1,5 +1,5 @@
 jobs:
-  - job: Build Test Deploy
+  - job: build_test_deploy
     steps:
     - task: Maven@3
       displayName: Maven Compile
