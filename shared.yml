@@ -39,7 +39,7 @@ jobs:
          Write-Host "Quality Gate Succeeded"
          } else {
          throw "Quality gate failed"
-         }'
+         }
             
     - task: CopyFiles@2
       displayName: Copy Jar File
