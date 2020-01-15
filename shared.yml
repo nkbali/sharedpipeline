@@ -18,8 +18,8 @@ jobs:
        SonarCloud: 'Sonar Cloud'
        organization: 'nkbali'
        scannerMode: 'Other'
-	
-	- task: Maven@3
+       
+    - task: Maven@3
       displayName: Sonar Analysis
       inputs:
        mavenPomFile: 'pom.xml'
