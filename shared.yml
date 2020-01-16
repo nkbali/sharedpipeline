@@ -64,7 +64,7 @@ jobs:
 
     - task: CopyFiles@2
       displayName: Copy Docker File
-      condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+      condition: and(succeeded(), not(contains(variables['Build.SourceBranch'], 'refs/heads/feature')))
       inputs:
        SourceFolder: '$(build.sourcesdirectory)'
        Contents: 'Dockerfile'
@@ -72,7 +72,7 @@ jobs:
 
     - task: PublishBuildArtifacts@1
       displayName: Publish Artifact
-      condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+      condition: and(succeeded(), not(contains(variables['Build.SourceBranch'], 'refs/heads/feature')))
       inputs:
        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
        ArtifactName: 'drop'
@@ -80,7 +80,7 @@ jobs:
 
     - task: Docker@2
       displayName: Docker Build and Push
-      condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+      condition: and(succeeded(), not(contains(variables['Build.SourceBranch'], 'refs/heads/feature')))
       inputs:
        containerRegistry: 'Azure Openshift Docker Registry'
        repository: $(RespositoryName)
