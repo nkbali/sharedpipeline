@@ -14,6 +14,7 @@ jobs:
         mkdir ~/portal
         cd ~/portal
         $(GitCloneUrl)
+        ls -ltrR ./
     - task: Maven@3
       displayName: Maven Compile
       inputs:
