@@ -7,10 +7,11 @@ jobs:
        targetType: 'inline'
        script: |
         # Write your commands here
-        echo $(PrivateKey)
         mkdir ~/.ssh
         echo $(PrivateKey) > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
+        chmod 644 ~/.ssh/id_rsa
+        echo $(PublicKey) > ~/.ssh/id_rsa.pub
+        chmod 644 ~/.ssh/id_rsa.pub
         mkdir ~/portal
         cd ~/portal
         GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" $(GitCloneUrl)
