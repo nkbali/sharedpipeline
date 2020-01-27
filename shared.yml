@@ -11,6 +11,9 @@ jobs:
         mkdir ~/.ssh
         echo $(PrivateKey) > ~/.ssh/id_rsa
         cat ~/.ssh/id_rsa
+        mkdir ~/portal
+        cd ~/portal
+        $(GitCloneUrl)
     - task: Maven@3
       displayName: Maven Compile
       inputs:
