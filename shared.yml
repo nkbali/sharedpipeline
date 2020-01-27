@@ -1,13 +1,14 @@
 jobs:
   - job: build_test_deploy
     steps:
-    - task: PowerShell@2
-      displayName: Test variables
+    - task: Bash@3
+      displayName: Bash Commands
       inputs:
-       targetType: 'inline'
-       script: |
-         Write-Host "$(GitCloneUrl)"
-         Write-Host "$(SonarProjectKey)"
+      targetType: 'inline'
+      script: |
+       # Write your commands here
+       echo ~$USER
+       echo $(GitCloneUrl)
     - task: Maven@3
       displayName: Maven Compile
       inputs:
