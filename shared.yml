@@ -10,11 +10,10 @@ jobs:
         echo $(PrivateKey)
         mkdir ~/.ssh
         echo $(PrivateKey) > ~/.ssh/id_rsa
-        cat ~/.ssh/id_rsa
+        ssh-keyscan codeserver.dev.3783ae00-7f04-4d47-9fae-991f1205d3ca.drush.in >> ~/.ssh/known_hosts
+        cat ~/.ssh/known_hosts
         mkdir ~/portal
         cd ~/portal
-        git --version
-        GIT_SSH_COMMAND = "ssh -o StrictHostKeyChecking=no"
         $(GitCloneUrl)
         ls -ltrR ./
     - task: Maven@3
