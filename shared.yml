@@ -1,6 +1,15 @@
+variables:
+ - group: dev_portal
 jobs:
   - job: build_test_deploy
     steps:
+    - task: PowerShell@2
+      displayName: Test variables
+      inputs:
+       targetType: 'inline'
+       script: |
+         Write-Host "$(GitCloneUrl)"
+         Write-Host "$(SonarToken)"
     - task: Maven@3
       displayName: Maven Compile
       inputs:
