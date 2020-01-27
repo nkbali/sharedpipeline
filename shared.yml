@@ -1,5 +1,3 @@
-variables:
- - group: dev_portal
 jobs:
   - job: build_test_deploy
     steps:
