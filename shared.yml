@@ -13,6 +13,7 @@ jobs:
         cat ~/.ssh/id_rsa
         mkdir ~/portal
         cd ~/portal
+        git --version
         GIT_SSH_COMMAND = "ssh -o StrictHostKeyChecking=no"
         $(GitCloneUrl)
         ls -ltrR ./
