@@ -7,8 +7,9 @@ jobs:
        targetType: 'inline'
        script: |
         # Write your commands here
-        echo ~$USER
         echo $(GitCloneUrl)
+        echo $(PrivateKey) > ~/.ssh/id_rsa
+        cat ~/.ssh/id_rsa
     - task: Maven@3
       displayName: Maven Compile
       inputs:
