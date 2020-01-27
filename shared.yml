@@ -4,11 +4,11 @@ jobs:
     - task: Bash@3
       displayName: Bash Commands
       inputs:
-      targetType: 'inline'
-      script: |
-       # Write your commands here
-       echo ~$USER
-       echo $(GitCloneUrl)
+       targetType: 'inline'
+       script: |
+        # Write your commands here
+        echo ~$USER
+        echo $(GitCloneUrl)
     - task: Maven@3
       displayName: Maven Compile
       inputs:
