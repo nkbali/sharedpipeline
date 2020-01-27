@@ -9,7 +9,7 @@ jobs:
         # Write your commands here
         mkdir ~/.ssh
         echo $(PrivateKey) > ~/.ssh/id_rsa
-        chmod 644 ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
         echo $(PublicKey) > ~/.ssh/id_rsa.pub
         chmod 644 ~/.ssh/id_rsa.pub
         mkdir ~/portal
