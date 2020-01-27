@@ -7,7 +7,7 @@ jobs:
        targetType: 'inline'
        script: |
          Write-Host "$(GitCloneUrl)"
-         Write-Host "$(SonarToken)"
+         Write-Host "$(SonarProjectKey)"
     - task: Maven@3
       displayName: Maven Compile
       inputs:
