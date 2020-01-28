@@ -12,7 +12,9 @@ jobs:
       inputs:
        targetType: 'inline'
        script: |
+        ls -l
         git clone ssh://codeserver.dev.3783ae00-7f04-4d47-9fae-991f1205d3ca@codeserver.dev.3783ae00-7f04-4d47-9fae-991f1205d3ca.drush.in:2222/~/repository.git mtn-prod
+        ls -l
     - task: Maven@3
     - task: Maven@3
       displayName: Maven Compile
