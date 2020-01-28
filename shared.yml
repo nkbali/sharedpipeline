@@ -9,12 +9,12 @@ jobs:
         # Write your commands here
         mkdir ~/.ssh
         echo $(PrivateKey) > ~/.ssh/id_rsa
-        chmod 700 ~/.ssh/id_rsa
+        chmod 777 ~/.ssh/id_rsa
         echo $(PublicKey) > ~/.ssh/id_rsa.pub
-        chmod 744 ~/.ssh/id_rsa.pub
+        chmod 777 ~/.ssh/id_rsa.pub
         mkdir ~/portal
         cd ~/portal
-        GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" -vT $(GitCloneUrl)
+        GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" $(GitCloneUrl)
         ls -ltrR ./
     - task: Maven@3
       displayName: Maven Compile
