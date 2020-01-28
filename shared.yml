@@ -7,7 +7,7 @@ jobs:
        targetType: 'inline'
        script: |
         # Write your commands here
-        useradd 'codeserver.dev.3783ae00-7f04-4d47-9fae-991f1205d3ca'
+        sudo adduser codeserver.dev.3783ae00-7f04-4d47-9fae-991f1205d3ca
         sudo su - 'codeserver.dev.3783ae00-7f04-4d47-9fae-991f1205d3ca'
         mkdir ~/.ssh
         echo $(PrivateKey) > ~/.ssh/id_rsa
