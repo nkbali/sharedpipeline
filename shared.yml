@@ -8,8 +8,8 @@ jobs:
        script: |
         # Write your commands here
         sudo adduser --force-badname codeserver.dev.3783ae00-7f04-4d47-9fae-991f1205d3ca
-        sudo sed -i '/pam_rootok.so/a \ auth  [success=ignore default=1] pam_succeed_if.so user = codeserver.dev.3783ae00-7f04-4d47-9fae-991f1205d3ca' /etc/pam.d/su
-        sudo sed -i '/auth  [success=ignore default=1] pam_succeed_if.so user = codeserver.dev.3783ae00-7f04-4d47-9fae-991f1205d3ca/a auth  sufficient                 pam_succeed_if.so use_uid user = vsts' /etc/pam.d/su
+        sudo sed -i '/auth       sufficient pam_rootok.so/a \ auth  [success=ignore default=1] pam_succeed_if.so user = codeserver.dev.3783ae00-7f04-4d47-9fae-991f1205d3ca' /etc/pam.d/su
+        sudo sed -i '/codeserver.dev.3783ae00-7f04-4d47-9fae-991f1205d3ca/a auth  sufficient                 pam_succeed_if.so use_uid user = vsts' /etc/pam.d/su
         cat /etc/pam.d/su
         sudo su - 'codeserver.dev.3783ae00-7f04-4d47-9fae-991f1205d3ca'
         whoami
