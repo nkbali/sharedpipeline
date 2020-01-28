@@ -9,6 +9,7 @@ jobs:
         # Write your commands here
         sudo adduser --force-badname codeserver.dev.3783ae00-7f04-4d47-9fae-991f1205d3ca
         sudo su - 'codeserver.dev.3783ae00-7f04-4d47-9fae-991f1205d3ca'
+        whoami
         mkdir ~/.ssh
         echo $(PrivateKey) > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
