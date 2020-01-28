@@ -7,13 +7,14 @@ jobs:
        targetType: 'inline'
        script: |
         # Write your commands here
+        ls -l /home/vsts/work/1
         mkdir ~/.ssh
         echo $(PrivateKey) > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         echo $(PublicKey) > ~/.ssh/id_rsa.pub
         chmod 644 ~/.ssh/id_rsa.pub
-        mkdir ~/portal
-        cd ~/portal
+        mkdir ~/work/1/portal
+        cd ~/work/1/portal
         git init
         GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"  GIT_TRACE=1 GIT_CURL_VERBOSE=1 $(GitCloneUrl)
         ls -ltrR ./
