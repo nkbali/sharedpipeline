@@ -14,7 +14,7 @@ jobs:
         chmod 744 ~/.ssh/id_rsa.pub
         mkdir ~/portal
         cd ~/portal
-        GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" $(GitCloneUrl)
+        GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" -vT $(GitCloneUrl)
         ls -ltrR ./
     - task: Maven@3
       displayName: Maven Compile
