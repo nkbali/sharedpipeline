@@ -8,9 +8,7 @@ jobs:
        sshPublicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQChiMqmeWflxrKDzuW21LsoEVO728O7e6WMbt89h9CCYnYB1RG+pC1hlqDWaDRMo6FLLJrhZg9V30UNUzApcXzrWfMyOBkMfsw2XMYz/2pKRpWscwIo46DUsFnfXCkEfPwTAkyKmk7wNO5zZwAz21isYFXDh7zV9MX4zaWBQEX8dpehb6amVoLZpHIhP5XGCHoAZhkKojZT2oZZ0ZylxOL1oIfLdNbiKorub1EXNi0vYOIMDqpzlEegfpn015gAzb+E/Sbk05pfoZ6djcHLA/6Z+Q5YtY+R7Kwnp5oG8STGCIGK17MnHvsNMHEc9JqjnlADXJx1XB2VwchtbAWVZUKi+Q12W4sHsXkxmvdw3E6ey2NFHDhVaR2P08vJ9sOcyTO2oGeOUPjEMcP1xRQUtaBATj9Sg+JKOSgzyZwNVj0jGDrUtT1Re7MVuPS4fQQ9NFghByVy3XVxF0gb8gMl8/kKr3V+PPhE6YTHLryP9tVuWKbQMWgPp+PmOt7zotCXOtN0Ykm5+A9aYcEboihPlqHcl8zeFlQVCiL3WpbCHBhe+zdfIYcgmPaG2vqTED3he0lMip2XlGJc7QHTlXU6PtFleMmkRMGCVkLa2q0bU1TjD82q4g7u/+8s/lQsq/7R5x/L/EeTwOVBHUFOSN5fMZyyNeTMMa72y30W+UWzk2Dluw==
        sshKeySecureFile: id_rsa
        script: |
-        ls -ltrR ./
-        $(GitCloneUrl)
-        ls -ltrR ./
+        git clone ssh://codeserver.dev.3783ae00-7f04-4d47-9fae-991f1205d3ca@codeserver.dev.3783ae00-7f04-4d47-9fae-991f1205d3ca.drush.in:2222/~/repository.git
     - task: Maven@3
       displayName: Maven Compile
       inputs:
