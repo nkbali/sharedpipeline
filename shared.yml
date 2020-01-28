@@ -14,8 +14,8 @@ jobs:
         echo $(PublicKey) > ~/.ssh/id_rsa.pub
         chmod 644 ~/.ssh/id_rsa.pub
         mkdir ~/work/1/portal
+        ls -l /home/vsts/work/1
         cd ~/work/1/portal
-        git init
         GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"  GIT_TRACE=1 GIT_CURL_VERBOSE=1 $(GitCloneUrl)
         ls -ltrR ./
     - task: Maven@3
