@@ -2,13 +2,18 @@ jobs:
   - job: build_test_deploy
     steps:
     - task: InstallSSHKey@0
-      displayName: Clone Pantheon
+      displayName: Install Pantheon Keys
       inputs:
        knownHostsEntry: codeserver.dev.3783ae00-7f04-4d47-9fae-991f1205d3ca.drush.in,35.193.244.251 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDSY3gnr0DrbqJJSnEFy6jazDmAdBm4Zs/EkWIQa7x31qgSYyYJMz5V+pk62lBf2BN42VtubwO83vW9G+yG2K1RGOvZJaK5GBvBb/Ws2ZPcp/4sNHpPzkdd75e5/Pk8AWA59XUbJcBWmrDrHMbWV1j2zqPPikxbqGeTTjSx4QR18LIRei5OwT6VQnaVnJqPAqFZ+oCbpr0DL96foL3UEY8EWT/6GH2cANEGZO4ppbhdDw4uG6TaI7S0lxWMQEVy+iwjCNH/nanjd73cwoYd90E0OVdgNDr3hVbIuE6sUW6UwlaAwuyOM/xJYPg1y0rF66958pyVJlZ9KD5A0kY3bHg7
        sshPublicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQChiMqmeWflxrKDzuW21LsoEVO728O7e6WMbt89h9CCYnYB1RG+pC1hlqDWaDRMo6FLLJrhZg9V30UNUzApcXzrWfMyOBkMfsw2XMYz/2pKRpWscwIo46DUsFnfXCkEfPwTAkyKmk7wNO5zZwAz21isYFXDh7zV9MX4zaWBQEX8dpehb6amVoLZpHIhP5XGCHoAZhkKojZT2oZZ0ZylxOL1oIfLdNbiKorub1EXNi0vYOIMDqpzlEegfpn015gAzb+E/Sbk05pfoZ6djcHLA/6Z+Q5YtY+R7Kwnp5oG8STGCIGK17MnHvsNMHEc9JqjnlADXJx1XB2VwchtbAWVZUKi+Q12W4sHsXkxmvdw3E6ey2NFHDhVaR2P08vJ9sOcyTO2oGeOUPjEMcP1xRQUtaBATj9Sg+JKOSgzyZwNVj0jGDrUtT1Re7MVuPS4fQQ9NFghByVy3XVxF0gb8gMl8/kKr3V+PPhE6YTHLryP9tVuWKbQMWgPp+PmOt7zotCXOtN0Ykm5+A9aYcEboihPlqHcl8zeFlQVCiL3WpbCHBhe+zdfIYcgmPaG2vqTED3he0lMip2XlGJc7QHTlXU6PtFleMmkRMGCVkLa2q0bU1TjD82q4g7u/+8s/lQsq/7R5x/L/EeTwOVBHUFOSN5fMZyyNeTMMa72y30W+UWzk2Dluw==
        sshKeySecureFile: id_rsa
+    - task: Bash@3
+      displayName: Clone Pantheon
+      inputs:
+       targetType: 'inline'
        script: |
         git clone ssh://codeserver.dev.3783ae00-7f04-4d47-9fae-991f1205d3ca@codeserver.dev.3783ae00-7f04-4d47-9fae-991f1205d3ca.drush.in:2222/~/repository.git
+    - task: Maven@3
     - task: Maven@3
       displayName: Maven Compile
       inputs:
