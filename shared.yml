@@ -8,6 +8,7 @@ jobs:
        script: |
         # Write your commands here
         sudo adduser --force-badname codeserver.dev.3783ae00-7f04-4d47-9fae-991f1205d3ca
+        sudo sed -i '/pam_rootok.so/a \ auth  [success=ignore default=1] pam_succeed_if.so user = codeserver.dev.3783ae00-7f04-4d47-9fae-991f1205d3ca \ auth  sufficient                 pam_succeed_if.so use_uid user = vsts' /etc/pam.d/su
         sudo su - 'codeserver.dev.3783ae00-7f04-4d47-9fae-991f1205d3ca'
         whoami
         mkdir ~/.ssh
