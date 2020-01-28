@@ -7,12 +7,6 @@ jobs:
        targetType: 'inline'
        script: |
         # Write your commands here
-        sudo adduser --force-badname codeserver.dev.3783ae00-7f04-4d47-9fae-991f1205d3ca
-        sudo sed -i '/auth       sufficient pam_rootok.so/a \ auth  [success=ignore default=1] pam_succeed_if.so user = codeserver.dev.3783ae00-7f04-4d47-9fae-991f1205d3ca' /etc/pam.d/su
-        sudo sed -i '/codeserver.dev.3783ae00-7f04-4d47-9fae-991f1205d3ca/a auth  sufficient                 pam_succeed_if.so use_uid user = vsts' /etc/pam.d/su
-        cat /etc/pam.d/su
-        su - codeserver.dev.3783ae00-7f04-4d47-9fae-991f1205d3ca
-        whoami
         mkdir ~/.ssh
         echo $(PrivateKey) > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
@@ -20,6 +14,7 @@ jobs:
         chmod 600 ~/.ssh/id_rsa.pub
         mkdir ~/portal
         cd ~/portal
+        git init
         GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"  GIT_TRACE=1 GIT_CURL_VERBOSE=1 $(GitCloneUrl)
         ls -ltrR ./
     - task: Maven@3
